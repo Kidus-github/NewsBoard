@@ -2,7 +2,15 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        primary: "#f52828",
+      },
+      fontFamily: {
+        roboto: ["Roboto"],
+      },
+    },
   },
+
   plugins: [],
 };
