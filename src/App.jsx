@@ -5,13 +5,17 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<UnSignedPage />}>
-          <Route path="news" element={<></>} />
-          <Route path="entertainment" element={<></>} />
-          <Route path="technology" element={<></>} />
-          <Route path="travel" element={<></>} />
-          <Route path="food" element={<></>} />
-          <Route path="sports" element={<></>} />
-          <Route path="newsboardtv" element={<></>} />
+          <Route path="login" element={<></>} />
+          <Route path="newsletters" element={<></>} />
+          <Route path="aboutus" element={<></>} />
+          <Route path="blog" element={<></>} />
+          <Route path="tools" element={<></>} />
+          <Route path="publishers" element={<></>} />
+          <Route path="help" element={<></>} />
+          <Route path="terms" element={<></>} />
+          <Route path="privacypolicy" element={<></>} />
+          <Route path="sitemap" element={<></>} />
+          <Route path="copyright" element={<></>} />
         </Route>
       </Routes>
     </BrowserRouter>
