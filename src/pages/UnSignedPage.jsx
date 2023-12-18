@@ -1,5 +1,5 @@
 import IntroSection from "../components/IntroSection";
-import { Nav, Header, Card } from "../components/ui/index";
+import { Nav, Header, NewsListSection, Footer } from "../components/ui/index";
 import { useEffect, useState } from "react";
 
 function UnSignedPage() {
@@ -11,16 +11,13 @@ function UnSignedPage() {
       .catch(() => console.log("dataFailed"));
   }, []);
   return (
-    <div>
+    <>
       <Header />
       <IntroSection />
       <Nav />
-      <div className="flex flex-wrap gap-4 justify-center ">
-        {news.map((post, i) => (
-          <Card news={post} key={i} />
-        ))}
-      </div>
-    </div>
+      <NewsListSection news={news} />
+      <Footer />
+    </>
   );
 }
 

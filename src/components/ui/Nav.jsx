@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 function Nav() {
   return (
-    <div className="sticky border-solid border-x-0 border-y-2 border-slate-200 py-3 flex justify-around mb-8 top-12 bg-white">
+    <div className="sticky border-solid border-x-0 border-y-2 border-slate-200 py-3 flex justify-around mb-8 top-14 bg-white">
       <NavLink className="text-slate-600 font-bold " path="news">
         NEWS
       </NavLink>

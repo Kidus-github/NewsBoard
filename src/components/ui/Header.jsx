@@ -2,7 +2,7 @@ import Input from "../Input";
 import Button from "./Button";
 function Header() {
   return (
-    <div className="flex items-center justify-between py-1 px-5 border-solid border-0 border-b-2 border-slate-100 fixed w-full bg-white">
+    <div className="flex items-center justify-between py-2 px-5 border-solid border-0 border-b-2 border-slate-100 fixed w-full bg-white">
       <div className="flex justify-center items-center">
         <img
           src="/src/assets/Logo.png"
@@ -13,8 +13,8 @@ function Header() {
       </div>
       <div className="flex gap-3">
         <Input />
-        <Button type="solid">SignUp</Button>
-        <Button>Login</Button>
+        <Button className=" bg-primary text-white rounded-md">SignUp</Button>
+        <Button className="text-slate-700 ">Login</Button>
       </div>
     </div>
   );
