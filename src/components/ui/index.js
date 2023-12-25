@@ -7,6 +7,7 @@ import Footer from "./Footer";
 import HomeHeader from "./HomeHeader";
 import ForYouMenu from "./ForYouMenu";
 import FollowNav from "./FollowNav";
+import NewsContent from "./NewsContent";
 export {
   Nav,
   Header,
@@ -17,4 +18,5 @@ export {
   HomeHeader,
   ForYouMenu,
   FollowNav,
+  NewsContent,
 };

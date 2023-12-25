@@ -3,6 +3,7 @@ import UnSignedPage from "./pages/UnSignedPage";
 import ForYouPage from "./pages/ForYouPage";
 import Profile from "./pages/Profile";
 import Following from "./pages/Following";
+import NewsLetter from "./pages/NewsLetter";
 function App() {
   return (
     <BrowserRouter>
@@ -22,6 +23,7 @@ function App() {
         <Route path="login" element={<ForYouPage />} />
         <Route path="profile" element={<Profile />} />
         <Route path="following" element={<Following />} />
+        <Route path="newsletter/:id" element={<NewsLetter />} />
       </Routes>
     </BrowserRouter>
   );
