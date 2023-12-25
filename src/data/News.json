@@ -96,5 +96,31 @@
       "date": "12/16/2023",
       "img": ["/src/assets/6.jpeg"]
     }
+  ],
+  "user": [
+    {
+      "id": "Blasome324",
+      "username": "Kidus_gi",
+      "email": "kidus.muluwork@gmail.com",
+      "fname": "Kidus",
+      "lname": "Girma",
+      "propic": ["/src/assets/6.jpeg"]
+    },
+    {
+      "id": "Blasome445",
+      "username": "Biya_gi",
+      "email": "Biya.muluwork@gmail.com",
+      "fname": "Biya",
+      "lname": "Girma",
+      "propic": ["/src/assets/4.jpeg"]
+    },
+    {
+      "id": "Blasome556",
+      "username": "Beselam_gi",
+      "email": "Beselam.muluwork@gmail.com",
+      "fname": "Beselam",
+      "lname": "Girma",
+      "propic": ["/src/assets/3.jpeg"]
+    }
   ]
 }

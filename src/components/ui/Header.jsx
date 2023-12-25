@@ -1,6 +1,9 @@
+import { useNavigate } from "react-router-dom";
 import Input from "../Input";
 import Button from "./Button";
+
 function Header() {
+  const navigate = useNavigate();
   return (
     <div className="flex items-center justify-between py-2 px-5 border-solid border-0 border-b-2 border-slate-100 fixed w-full bg-white">
       <div className="flex justify-center items-center">
@@ -14,7 +17,15 @@ function Header() {
       <div className="flex gap-3">
         <Input />
         <Button className=" bg-primary text-white rounded-md">SignUp</Button>
-        <Button className="text-slate-700 ">Login</Button>
+        <Button
+          className="text-slate-700 "
+          onClick={() => {
+            console.log("this is clicked");
+            navigate("login");
+          }}
+        >
+          Login
+        </Button>
       </div>
     </div>
   );

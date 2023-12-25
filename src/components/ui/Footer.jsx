@@ -8,7 +8,7 @@ function Footer() {
     <>
       <ul className="mt-4 flex justify-center gap-4 underline underline-offset-2">
         <li>
-          <NavLink>Log In</NavLink>
+          <NavLink to="login">Log In</NavLink>
         </li>
         <li>
           <NavLink>Newsletters</NavLink>

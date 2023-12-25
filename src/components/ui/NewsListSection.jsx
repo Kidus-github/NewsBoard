@@ -1,7 +1,7 @@
 import { Button, Card } from "./index";
 function NewsListSection({ news }) {
   return (
-    <div className="flex items-center flex-col">
+    <div className="flex items-center flex-col m-2">
       <ul className="flex flex-wrap gap-12 justify-center ">
         {news.map((post, i) => (
           <li key={i}>

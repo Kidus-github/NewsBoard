@@ -1,11 +1,13 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import UnSignedPage from "./pages/UnSignedPage";
+import ForYouPage from "./pages/ForYouPage";
+import Profile from "./pages/Profile";
+import Following from "./pages/Following";
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<UnSignedPage />}>
-          <Route path="login" element={<></>} />
           <Route path="newsletters" element={<></>} />
           <Route path="aboutus" element={<></>} />
           <Route path="blog" element={<></>} />
@@ -17,6 +19,9 @@ function App() {
           <Route path="sitemap" element={<></>} />
           <Route path="copyright" element={<></>} />
         </Route>
+        <Route path="login" element={<ForYouPage />} />
+        <Route path="profile" element={<Profile />} />
+        <Route path="following" element={<Following />} />
       </Routes>
     </BrowserRouter>
   );
