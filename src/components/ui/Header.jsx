@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import Input from "../Input";
+import SearchInput from "../SearchInput";
 import Button from "./Button";
 
 function Header() {
@@ -15,7 +15,7 @@ function Header() {
         <h1 className="font-bold font-sans text-2xl ">NEWSBOARD</h1>
       </div>
       <div className="flex gap-3">
-        <Input />
+        <SearchInput />
         <Button className=" bg-primary text-white rounded-md">SignUp</Button>
         <Button
           className="text-slate-700 "

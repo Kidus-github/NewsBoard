@@ -1,12 +1,10 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
-
-function Input() {
+function Input({ placeholder, type }) {
   return (
-    <div className="flex items-center gap-2 bg-slate-100 py-1 px-4 rounded-md text-md">
-      <FontAwesomeIcon icon={faMagnifyingGlass} className="text-slate-500" />
-      <input type="text" name="Search" id="" placeholder="Search Newsboard" />
-    </div>
+    <input
+      type={type}
+      placeholder={placeholder}
+      className="appearance-none border-solid rounded-md caret-[#f52828] text-white font-medium h-[44px] py-2 px-[12px] w-full"
+    />
   );
 }
 

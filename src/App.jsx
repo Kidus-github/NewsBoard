@@ -24,6 +24,7 @@ function App() {
         <Route path="profile" element={<Profile />} />
         <Route path="following" element={<Following />} />
         <Route path="newsletter/:id" element={<NewsLetter />} />
+        
       </Routes>
     </BrowserRouter>
   );
