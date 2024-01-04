@@ -12,7 +12,7 @@ function UnSignedPage() {
       .catch(() => console.log("dataFailed"));
   }, []);
   return (
-    <>
+    <div className="overscroll-none">
       <Header />
       <IntroSection />
       <Nav />
@@ -20,7 +20,7 @@ function UnSignedPage() {
       <Footer />
       <SignupModal />
       {/* <LoginModal /> */}
-    </>
+    </div>
   );
 }
 
