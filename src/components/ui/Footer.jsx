@@ -5,8 +5,8 @@ function Footer() {
   // Get the year
   const year = currentDate.getFullYear();
   return (
-    <>
-      <ul className="mt-4 flex justify-center gap-4 underline underline-offset-2">
+    <div className="relative top-8">
+      <ul className="mt-12 flex justify-center gap-4 underline underline-offset-2 ">
         <li>
           <NavLink to="login">Log In</NavLink>
         </li>
@@ -41,7 +41,7 @@ function Footer() {
       <div className="flex justify-center mt-6 mb-32">
         <NavLink>© {year} Newsboard</NavLink>
       </div>
-    </>
+    </div>
   );
 }
 

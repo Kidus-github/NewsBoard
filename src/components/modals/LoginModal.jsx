@@ -1,12 +1,13 @@
+import { useNavigate } from "react-router-dom";
 import {Button} from "../ui/index"
-function LoginModal() {
-    
+function LoginModal({setIsLogIn}) {
+const navigate = useNavigate();
   return (
     
     <div className="flex h-full justify-center items-center bg-[#00000058] left-0 top-0 fixed select-none w-full z-[99] ">
         <section className="shadow-[0px_0px_16px_#00000006] rounded-xl select-text max-h-[95%] relative bg-white">
              <div className="absolute top-3 right-3 z-[999]">
-                <button className="bg-transparent border-0 text-[#555] cursor-pointer p-0 ">
+                <button className="bg-transparent border-0 text-[#555] cursor-pointer p-0 " onClick={()=>{setIsLogIn(false)}}>
                     <div className="flex items-center justify-center p-0 text-[#262626]">
                         <svg role="img" aria-labelledby="closenew-icon-title" width="24" height="24" viewBox="0 0 24 24" fill="none">
                             <title id="closenew-icon-title">closenew</title>
@@ -77,7 +78,7 @@ function LoginModal() {
                 <div className="mb-[26px] text-right">
                     <a href="">Forgot your password?</a>
                 </div>
-                <button className="bg-[#f528284b] border-solid border-0 border-[#f528282f] text-white w-full py-[8px] px-[12px] text-lg">
+                <button className="bg-[#f528284b] border-solid border-0 border-[#f528282f] text-white w-full py-[8px] px-[12px] text-lg" onClick={()=>{setIsLogIn(false); navigate("login")}}>
                     Log In
                 </button>
             </form>

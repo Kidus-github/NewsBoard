@@ -1,5 +1,5 @@
 import { Button } from "./ui/index";
-function IntroSection() {
+function IntroSection({setIsSignUp}) {
   return (
     <div className="py-20 flex flex-col justify-center items-center">
       <h1 className="font-bold text-6xl mt-16">GET INFORMED</h1>
@@ -9,7 +9,7 @@ function IntroSection() {
       <p className="font-bold text-2xl font-sans pb-6">
         Stories Curated For You
       </p>
-      <Button className=" bg-primary text-white rounded-md ">Sign up</Button>
+      <Button className="  bg-primary text-white rounded-md hover:bg-[#ad2224] text-lg px-6 py-3" onClick={()=>{setIsSignUp(true)}}>Sign up</Button>
     </div>
   );
 }

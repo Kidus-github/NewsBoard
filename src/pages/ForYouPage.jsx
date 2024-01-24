@@ -1,9 +1,4 @@
-import {
-  NewsListSection,
-  Footer,
-  ForYouMenu,
-  HomeHeader,
-} from "../components/ui/index";
+import { NewsListSection, ForYouMenu } from "../components/ui/index";
 import { useEffect, useState } from "react";
 
 function ForYouPage() {
@@ -16,11 +11,9 @@ function ForYouPage() {
   }, []);
   return (
     <>
-      <HomeHeader />
       <div className="relative top-16">
         <ForYouMenu />
         <NewsListSection news={news} />
-        <Footer />
       </div>
     </>
   );

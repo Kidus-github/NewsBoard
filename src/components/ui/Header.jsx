@@ -1,11 +1,11 @@
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import SearchInput from "../SearchInput";
 import Button from "./Button";
 
-function Header() {
-  const navigate = useNavigate();
+function Header({ setIsSignUp, setIsLogIn }) {
+  // const navigate = useNavigate();
   return (
-    <div className="flex items-center justify-between py-2 px-5 border-solid border-0 border-b-2 border-slate-100 fixed w-full bg-white">
+    <div className="flex items-center justify-between py-2 px-5 border-solid border-0 border-b-2 border-slate-100 fixed w-full bg-white top-0">
       <div className="flex justify-center items-center">
         <img
           src="/src/assets/Logo.png"
@@ -16,15 +16,23 @@ function Header() {
       </div>
       <div className="flex gap-3">
         <SearchInput />
-        <Button className=" bg-primary text-white rounded-md">SignUp</Button>
         <Button
-          className="text-slate-700 "
+          className=" bg-primary text-white rounded-md hover:bg-[#ad2224] "
           onClick={() => {
-            console.log("this is clicked");
-            navigate("login");
+            setIsSignUp(true);
           }}
         >
-          Login
+          Sign up
+        </Button>
+        <Button
+          className="text-slate-700 hover:text-[#6f1414] text-sm "
+          onClick={() => {
+            console.log("this is clicked");
+            setIsLogIn(true);
+            // navigate("login");
+          }}
+        >
+          Log in
         </Button>
       </div>
     </div>
