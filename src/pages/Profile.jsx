@@ -13,13 +13,9 @@ function Profile() {
       .catch(() => console.log("dataFailed"));
   }, []);
   return (
-    <>
-      <HomeHeader />
-      <div className="relative top-16">
-        <ProfileSection user={user} />
-        <Footer />
-      </div>
-    </>
+    <div className="relative top-16">
+      <ProfileSection user={user} />
+    </div>
   );
 }
 

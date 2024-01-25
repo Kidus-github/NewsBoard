@@ -5,9 +5,19 @@ import SignedInPage from "./pages/SignedInPage";
 import Profile from "./pages/Profile";
 import Following from "./pages/Following";
 import NewsLetter from "./pages/NewsLetter";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 function App() {
-  const [LogIn, setLogIn] = useState(true);
+  const [LogIn, setLogIn] = useState(
+    localStorage.getItem("LogIn")
+      ? localStorage.getItem("LogIn") === "false"
+        ? false
+        : true
+      : false
+  );
+
+  useEffect(() => {
+    localStorage.setItem("LogIn", LogIn.toString());
+  }, [LogIn]);
   return (
     <BrowserRouter>
       <Routes>
@@ -19,7 +29,7 @@ function App() {
                 <ForYouPage />
               </SignedInPage>
             ) : (
-              <UnSignedPage />
+              <UnSignedPage setLogIn={setLogIn} LogIn={LogIn} />
             )
           }
         >
@@ -35,15 +45,21 @@ function App() {
           <Route path="copyright" element={<></>} /> */}
         </Route>
         <Route
-          path="login"
+          path="profile"
           element={
             <SignedInPage>
-              <ForYouPage />
+              <Profile />
             </SignedInPage>
           }
         />
-        <Route path="profile" element={<Profile />} />
-        <Route path="following" element={<Following />} />
+        <Route
+          path="following"
+          element={
+            <SignedInPage>
+              <Following />
+            </SignedInPage>
+          }
+        />
         <Route
           path="newsletter/:id"
           element={
