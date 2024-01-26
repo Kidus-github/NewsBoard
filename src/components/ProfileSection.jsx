@@ -1,7 +1,7 @@
 import { Button } from "./ui/index";
 function ProfileSection({ user }) {
   return (
-    <div className="m-10 p-10">
+    <div className="m-10 p-10 mb-0">
       <div className="flex gap-40">
         <div className="flex gap-8 mb-4 ">
           <div>
@@ -39,7 +39,7 @@ function ProfileSection({ user }) {
           </div>
         </div>
       </div>
-      <div className="my-8 px-12 h-[2px] bg-slate-200"></div>
+      <div className="my-8 px-12 h-[2px] bg-slate-200 dark:h-[1px] dark:bg-slate-500 "></div>
       <div className="flex gap-8 mb-24">
         <div className="flex flex-col justify-between w-[200px] h-[200px] bg-[#bcbcbc] text-white rounded-md p-2">
           <span className="uppercase font-bold text-lg">

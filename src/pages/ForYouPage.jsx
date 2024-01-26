@@ -10,12 +10,12 @@ function ForYouPage() {
       .catch(() => console.log("dataFailed"));
   }, []);
   return (
-    <>
-      <div className="relative top-16">
+    <div className="dark:bg-black">
+      <div className="relative top-16 dark:bg-black dark:text-white">
         <ForYouMenu />
         <NewsListSection news={news} />
       </div>
-    </>
+    </div>
   );
 }
 

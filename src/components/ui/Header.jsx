@@ -6,7 +6,7 @@ import { NavLink } from "react-router-dom";
 function Header({ setIsSignUp, setIsLogIn }) {
   // const navigate = useNavigate();
   return (
-    <div className="flex items-center justify-between py-2 px-5 border-solid border-0 border-b-2 border-slate-100 fixed w-full bg-white top-0">
+    <div className="flex items-center justify-between py-2 px-5 border-solid border-0 border-b-2 border-slate-100 fixed w-full bg-white top-0 dark:bg-black dark:text-[#ccccc0]">
       <NavLink to="/">
         <div className="flex justify-center items-center">
           <img

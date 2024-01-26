@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 function Card({ news }) {
   return (
     <Link to={`/newsletter/${news.id}`}>
-      <article className="p-4 border-slate-200 border-2 border-solid w-[400px] h-[700px] rounded-2xl flex flex-col justify-between ">
+      <article className="p-4 border-slate-200 border-2 border-solid w-[400px] h-[700px] rounded-2xl flex flex-col justify-between dark:border-[1px] dark:border-slate-700 ">
         <header className="mb-4 flex justify-between">
           <div className="flex items-center gap-3">
             <Link>
@@ -11,7 +11,9 @@ function Card({ news }) {
             <div className="flex flex-col">
               <Link>{news.author}</Link>
 
-              <span className="text-sm">something would be in this place</span>
+              <span className="text-sm dark:text-slate-300 ">
+                something would be in this place
+              </span>
             </div>
           </div>
           {/* TODO: check if it is an auterized user then display the menu opiton  */}
@@ -48,17 +50,19 @@ function Card({ news }) {
               className="object-cover w-full h-full rounded-lg"
             />
           </div>
-          <div className="my-3">
+          <div className="my-3 dark:text-[#949494]">
             <time>{news.date}</time>
           </div>
 
           <h3 className="text-xl mb-4">
             <strong>{news.headline}</strong>
           </h3>
-          <address>{news.author}</address>
+          <address className="dark:text-[#949494] dark:hover:text-white">
+            {news.author}
+          </address>
         </div>
         <footer>
-          <div className="flex justify-between text-gray-700">
+          <div className="flex justify-between text-gray-700 dark:text-white">
             <div className="flex justify-center items-center gap-2">
               <button type="button">
                 <svg

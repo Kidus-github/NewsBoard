@@ -14,10 +14,18 @@ function App() {
         : true
       : false
   );
+  const [theme, setTheme] = useState(false);
 
   useEffect(() => {
     localStorage.setItem("LogIn", LogIn.toString());
   }, [LogIn]);
+  useEffect(() => {
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [theme]);
   return (
     <BrowserRouter>
       <Routes>
@@ -25,7 +33,7 @@ function App() {
           path="/"
           element={
             LogIn ? (
-              <SignedInPage>
+              <SignedInPage theme={theme} setTheme={setTheme}>
                 <ForYouPage />
               </SignedInPage>
             ) : (
@@ -47,7 +55,7 @@ function App() {
         <Route
           path="profile"
           element={
-            <SignedInPage>
+            <SignedInPage theme={theme} setTheme={setTheme}>
               <Profile />
             </SignedInPage>
           }
@@ -55,7 +63,7 @@ function App() {
         <Route
           path="following"
           element={
-            <SignedInPage>
+            <SignedInPage theme={theme} setTheme={setTheme}>
               <Following />
             </SignedInPage>
           }
@@ -63,9 +71,15 @@ function App() {
         <Route
           path="newsletter/:id"
           element={
-            <UnSignedPage>
-              <NewsLetter />
-            </UnSignedPage>
+            LogIn ? (
+              <SignedInPage theme={theme} setTheme={setTheme}>
+                <NewsLetter />
+              </SignedInPage>
+            ) : (
+              <UnSignedPage setLogIn={setLogIn} LogIn={LogIn}>
+                <NewsLetter />
+              </UnSignedPage>
+            )
           }
         />
       </Routes>

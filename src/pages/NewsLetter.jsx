@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { Footer, NewsContent } from "../components/ui/index";
+import { NewsContent } from "../components/ui/index";
 import { useEffect, useState } from "react";
 
 function NewsLetter() {
@@ -13,8 +13,10 @@ function NewsLetter() {
   }, [id]);
 
   return (
-    <div className="mb-4">
-      <NewsContent news={news} />
+    <div className="dark:bg-black">
+      <div className="pb-14 dark:text-white">
+        <NewsContent news={news} />
+      </div>
     </div>
   );
 }

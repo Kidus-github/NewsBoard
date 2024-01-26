@@ -2,21 +2,21 @@ import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
-function HomeHeader() {
+function HomeHeader({ setDropDown, dropDown }) {
   return (
-    <div className="flex items-center justify-between px-1 border-solid border-0 border-b-2 border-slate-100 fixed w-full z-50 top-0 bg-white">
-      <div>
+    <div className="flex items-center justify-between px-1 border-solid border-0 border-b-2 border-slate-100 fixed w-full z-50 top-0 bg-white dark:text-white dark:bg-black dark:border-b-[1px] dark:border-slate-500">
+      <NavLink to={"/"}>
         <img
           src="/src/assets/Logo.png"
           alt="News Board Logo"
           className="w-[60px] h-[60px]"
         />
-      </div>
+      </NavLink>
       <div className="flex-1 ml-4">
         <ul className="flex gap-4 font-bold text-lg">
-          <li>
+          <li className=" underline decoration-[#f52828] decoration-4 underline-offset-4">
             <NavLink>
-              <h2>FOR YOU</h2>
+              <h2 className="">FOR YOU</h2>
             </NavLink>
           </li>
           <li>
@@ -100,14 +100,13 @@ function HomeHeader() {
             ></path>
           </svg>
         </div>
-        <div className="cursor-pointer">
-          <svg
-            width="35"
-            height="35"
-            viewBox="0 0 24 24"
-            fill="none"
-            className="border-solid rounded-full border border-slate-300"
-          >
+        <div
+          className="cursor-pointer w-9 h-9 border-solid rounded-full border border-slate-300"
+          onClick={() => {
+            setDropDown(!dropDown);
+          }}
+        >
+          <svg width="35" height="35" viewBox="0 5 24 24" fill="none">
             <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
               <g fill="#999">
                 <ellipse cx="12" cy="10.6368" rx="4.5" ry="4.1472"></ellipse>

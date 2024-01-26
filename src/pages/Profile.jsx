@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { HomeHeader, Footer } from "../components/ui/index";
 import ProfileSection from "../components/ProfileSection";
 
 function Profile() {
@@ -13,8 +12,10 @@ function Profile() {
       .catch(() => console.log("dataFailed"));
   }, []);
   return (
-    <div className="relative top-16">
-      <ProfileSection user={user} />
+    <div className=" dark:bg-black dark:text-white">
+      <div className="relative top-16 dark:bg-black">
+        <ProfileSection user={user} />
+      </div>
     </div>
   );
 }
