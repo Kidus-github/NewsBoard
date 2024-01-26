@@ -26,15 +26,21 @@ function ProfileSection({ user }) {
         </div>
         <div className="OverviewSection flex justify-between gap-52 ">
           <div className="flex flex-col">
-            <span className="font-bold text-lg text-slate-500">In review</span>
+            <span className="font-bold text-lg text-slate-500 uppercase">
+              Subscribers
+            </span>
+            <span className="font-bold text-2xl">289</span>
+          </div>
+          <div className="flex flex-col">
+            <span className="font-bold text-lg text-slate-500 uppercase">
+              Donations
+            </span>
             <span className="font-bold text-2xl">$0.00</span>
           </div>
           <div className="flex flex-col">
-            <span className="font-bold text-lg text-slate-500">Pending</span>
-            <span className="font-bold text-2xl">$0.00</span>
-          </div>
-          <div className="flex flex-col">
-            <span className="font-bold text-lg text-slate-500">Available</span>
+            <span className="font-bold text-lg text-slate-500 uppercase">
+              Total
+            </span>
             <span className="font-bold text-2xl">$0.00</span>
           </div>
         </div>
