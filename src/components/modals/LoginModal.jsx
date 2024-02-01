@@ -1,5 +1,29 @@
+import { useState } from "react";
 import { Button } from "../ui/index";
-function LoginModal({ setIsLogIn, setLogIn, LogIn }) {
+function LoginModal({ setIsLogIn, setLogIn }) {
+  const handleLogin = async (email, password) => {
+    try {
+      const response = await fetch("https://localhost:7281/api/Auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        const token = data.token;
+        localStorage.setItem("token", token.toString());
+      } else {
+        console.log("Incorrect login");
+      }
+    } catch (error) {
+      // Handle errors
+    }
+  };
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   return (
     <div className="flex h-full justify-center items-center bg-[#00000058] left-0 top-0 fixed select-none w-full z-[99] ">
       <section className="shadow-[0px_0px_16px_#00000006] rounded-xl select-text max-h-[95%] relative bg-white">
@@ -123,6 +147,9 @@ function LoginModal({ setIsLogIn, setLogIn, LogIn }) {
                   type="text"
                   name="username"
                   placeholder="Username or Email"
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                  }}
                 />
               </div>
             </div>
@@ -133,6 +160,9 @@ function LoginModal({ setIsLogIn, setLogIn, LogIn }) {
                   type="password"
                   name="password"
                   placeholder="Password"
+                  onChange={(e) => {
+                    setPassword(e.target.value);
+                  }}
                 />
               </div>
             </div>
@@ -144,8 +174,7 @@ function LoginModal({ setIsLogIn, setLogIn, LogIn }) {
               onClick={() => {
                 setIsLogIn(false);
                 setLogIn(true);
-                // navigate("login");
-                console.log(LogIn);
+                handleLogin(email, password);
               }}
             >
               Log In

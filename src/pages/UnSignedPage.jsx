@@ -9,7 +9,7 @@ function UnSignedPage({ children, setLogIn, LogIn }) {
   const [isSignUp, setIsSignUp] = useState(false);
   const [isLogIn, setIsLogIn] = useState(false);
   useEffect(function () {
-    fetch("http://localhost:8000/news") //category will be stated on the fetch for the news
+    fetch("https://localhost:7281/api/Content") //category will be stated on the fetch for the news
       .then((res) => res.json())
       .then((data) => setNews(data))
       .catch(() => console.log("dataFailed"));

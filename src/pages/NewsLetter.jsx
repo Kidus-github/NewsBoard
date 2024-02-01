@@ -6,9 +6,12 @@ function NewsLetter() {
   const [news, setNews] = useState({});
   const { id } = useParams();
   useEffect(() => {
-    fetch(`http://localhost:8000/news/${id}`)
+    fetch(`https://localhost:7281/api/Content/${id}`)
       .then((res) => res.json())
-      .then((data) => setNews(data))
+      .then((data) => {
+        setNews(data);
+        console.log(data);
+      })
       .catch(() => console.log("dataFailed"));
   }, [id]);
 
