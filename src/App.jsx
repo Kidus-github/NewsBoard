@@ -6,6 +6,7 @@ import Profile from "./pages/Profile";
 import Following from "./pages/Following";
 import NewsLetter from "./pages/NewsLetter";
 import { useEffect, useState } from "react";
+
 function App() {
   const [LogIn, setLogIn] = useState(
     localStorage.getItem("LogIn")

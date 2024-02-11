@@ -1,16 +1,79 @@
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 function Card({ news }) {
   const navigate = useNavigate();
+  const [likeColor, setLikeColor] = useState(true);
+  const [likeCount, setLikeCount] = useState(0);
+  const [commentCount, setCommentCount] = useState(0);
+
+  let Now = new Date("2022-02-02T12:00:00");
+  useEffect(() => {
+    fetch(`https://localhost:7281/api/Likes/${news.contentId}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setLikeCount(parseInt(data));
+        setLikeColor(false);
+      })
+      .catch(() => {
+        console.log("dataFailed");
+        console.log(news.contentId);
+      });
+  }, [news.contentId]);
+
+  useEffect(() => {
+    fetch(`https://localhost:7281/api/Comment/CountByid?id=${news.contentId}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setCommentCount(parseInt(data));
+      })
+      .catch(() => {
+        console.log("dataFailed");
+        console.log(news.contentId);
+      });
+  }, [news.contentId]);
+
+  function postData(Data) {
+    try {
+      const response = fetch("https://localhost:7281/api/Likes", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json; charset=utf-8",
+        },
+        body: JSON.stringify(Data),
+      }).then(() => {
+        console.log("Liked");
+      });
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      const responseData = response.text();
+      console.log("Response:", responseData);
+      // Handle response data
+    } catch (error) {
+      console.error("There was a problem with the POST request:", error);
+      // Handle error
+    }
+  }
+
+  function handleLike() {
+    setLikeColor(!likeColor);
+    setLikeCount((likeCount) => (likeColor ? likeCount + 1 : likeCount - 1));
+    console.log("it was here");
+    likeColor
+      ? postData({
+          likeId: "",
+          userId: "65ba438c901aa63ea7bec827", //To be changed with the token userid
+          contentId: news.contentId,
+          likeDate: Now,
+        })
+      : {};
+  }
   return (
     // <NavLink to={`/newsletter/${news.id}`}>
-    <article
-      className="p-4 border-slate-200 border-2 border-solid w-[400px] h-[700px] rounded-2xl flex flex-col justify-between dark:border-[1px] dark:border-slate-700 "
-      onClick={() => {
-        // console.log(news.contentId);
-        navigate(`/newsletter/${news.contentId}`);
-      }}
-    >
+    <article className="p-4 border-slate-200 border-2 border-solid w-[400px] h-[700px] rounded-2xl flex flex-col justify-between dark:border-[1px] dark:border-slate-700 ">
       <header className="mb-4 flex justify-between">
         <div className="flex items-center gap-3">
           <Link>
@@ -51,7 +114,13 @@ function Card({ news }) {
           </svg>
         </div>
       </header>
-      <div className="flex-grow">
+      <div
+        className="flex-grow"
+        onClick={() => {
+          // console.log(news.contentId);
+          navigate(`/newsletter/${news.contentId}`);
+        }}
+      >
         <div className="h-[277px]">
           <img
             src={news.image}
@@ -70,9 +139,13 @@ function Card({ news }) {
         </address>
       </div>
       <footer>
-        <div className="flex justify-between text-gray-700 dark:text-white">
-          <div className="flex justify-center items-center gap-2">
-            <button type="button">
+        <div className="flex justify-between  dark:text-white ">
+          <div className="flex justify-center items-center gap-x-2">
+            <button
+              type="button"
+              className="cursor-pointer"
+              onClick={() => handleLike()}
+            >
               <svg
                 role="img"
                 aria-labelledby="like-icon-title"
@@ -82,17 +155,17 @@ function Card({ news }) {
               >
                 <title id="like-icon-title">Like</title>
                 <path
-                  fillRule="evenodd"
+                  fillRule={`${likeColor ? "evenodd" : "nonzero"}`}
                   clipRule="evenodd"
                   d="M9.9727 3.12982C8.52038 1.63232 6.32904 1.348 4.50782 1.99529C2.29089 2.78321 0.510002 4.96682 0.88251 8.11869C1.09588 9.92403 2.09418 12.0052 3.60513 13.841C5.12489 15.6874 7.21869 17.3542 9.70978 18.2814C9.89978 18.3521 10.109 18.3511 10.2984 18.2786C12.7214 17.3511 14.8116 15.6862 16.3445 13.8445C17.8677 12.0145 18.9044 9.93183 19.1186 8.11869C19.4935 4.947 17.6251 2.77403 15.392 1.99383C13.571 1.35763 11.3595 1.61962 9.9727 3.12982ZM5.06597 3.56572C3.52649 4.11287 2.2632 5.60084 2.53766 7.92307C2.703 9.32209 3.51823 11.1128 4.89197 12.7818C6.1947 14.3646 7.95028 15.7765 9.99618 16.6048C11.9865 15.7762 13.7439 14.3637 15.0635 12.7783C16.4574 11.1036 17.2991 9.31429 17.4635 7.92307C17.7356 5.62065 16.4304 4.12209 14.8422 3.56723C13.2023 2.99426 11.4753 3.46891 10.7452 4.92341C10.6074 5.19815 10.3294 5.37466 10.0221 5.38265C9.71479 5.39063 9.42805 5.22878 9.27608 4.96157C8.41645 3.45007 6.64871 3.00319 5.06597 3.56572Z"
-                  fill="currentColor"
+                  fill={`${likeColor ? "currentColor" : "red"}`}
                 ></path>
               </svg>
             </button>
-            <span className="font-semibold">23</span>
+            <span className="font-semibold">{likeCount}</span>
           </div>
           <div className="flex justify-center items-center gap-2">
-            <button type="button">
+            <button type="button" className="cursor-pointer">
               <svg
                 role="img"
                 aria-labelledby="comment-icon-title"
@@ -121,10 +194,10 @@ function Card({ news }) {
                 ></path>
               </svg>
             </button>
-            <span className="font-semibold">64</span>
+            <span className="font-semibold">{commentCount}</span>
           </div>
           <div className="flex justify-center items-center gap-2">
-            <button type="button">
+            <button type="button" className="cursor-pointer">
               <svg
                 role="img"
                 aria-labelledby="flip-icon-title"
@@ -152,7 +225,7 @@ function Card({ news }) {
             <span className="font-semibold">2</span>
           </div>
           <div>
-            <button type="button">
+            <button type="button" className="cursor-pointer">
               <svg
                 role="img"
                 aria-labelledby="share-icon-title"

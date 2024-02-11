@@ -4,10 +4,10 @@ import ProfileSection from "../components/ProfileSection";
 function Profile() {
   const [user, setUser] = useState({});
   useEffect(function () {
-    fetch("http://localhost:8000/user")
+    fetch("https://localhost:7281/api/User/65ba438c901aa63ea7bec827")
       .then((res) => res.json())
       .then((data) => {
-        setUser(data.at(0));
+        setUser(data);
       })
       .catch(() => console.log("dataFailed"));
   }, []);

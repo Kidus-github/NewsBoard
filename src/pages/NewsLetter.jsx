@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import { NewsContent } from "../components/ui/index";
+// import CommentModal from "../components/modals/CommentModal";
 import { useEffect, useState } from "react";
 
 function NewsLetter() {

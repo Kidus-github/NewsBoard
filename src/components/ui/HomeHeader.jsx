@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
-function HomeHeader({ setDropDown, dropDown }) {
+function HomeHeader({ setDropDown, dropDown, setCreate, create }) {
   return (
     <div className="flex items-center justify-between px-1 border-solid border-0 border-b-2 border-slate-100 fixed w-full z-50 top-0 bg-white dark:text-white dark:bg-black dark:border-b-[1px] dark:border-slate-500">
       <NavLink to={"/"}>
@@ -37,7 +37,10 @@ function HomeHeader({ setDropDown, dropDown }) {
           <FontAwesomeIcon icon={faMagnifyingGlass} className="text-lg" />
           <span>SEARCH</span>
         </div>
-        <div className="flex gap-2 items-center">
+        <div
+          className="flex gap-2 items-center cursor-pointer"
+          onClick={() => setCreate(!create)}
+        >
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
             <path
               fillRule="evenodd"
