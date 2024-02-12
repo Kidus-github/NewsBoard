@@ -8,6 +8,7 @@ import HomeHeader from "./HomeHeader";
 import ForYouMenu from "./ForYouMenu";
 import FollowNav from "./FollowNav";
 import NewsContent from "./NewsContent";
+import CommentView from "./CommentView";
 export {
   Nav,
   Header,
@@ -19,4 +20,5 @@ export {
   ForYouMenu,
   FollowNav,
   NewsContent,
+  CommentView,
 };

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-function Card({ news }) {
+function Card({ news, setCommentSeciton }) {
   const navigate = useNavigate();
   const [likeColor, setLikeColor] = useState(true);
   const [likeCount, setLikeCount] = useState(0);
@@ -17,7 +17,7 @@ function Card({ news }) {
       })
       .catch(() => {
         console.log("dataFailed");
-        console.log(news.contentId);
+        // console.log(news.contentId);
       });
   }, [news.contentId]);
 
@@ -25,13 +25,13 @@ function Card({ news }) {
     fetch(`https://localhost:7281/api/Comment/CountByid?id=${news.contentId}`)
       .then((res) => res.json())
       .then((data) => {
+        console.log(data);
         setCommentCount(parseInt(data));
       })
       .catch(() => {
         console.log("dataFailed");
-        console.log(news.contentId);
       });
-  }, [news.contentId]);
+  }, [news.contentId, setCommentCount]);
 
   function postData(Data) {
     try {
@@ -57,20 +57,85 @@ function Card({ news }) {
       // Handle error
     }
   }
+  async function putData(Data, news) {
+    console.log(Data + "From here");
+    try {
+      const response = await fetch(
+        `https://localhost:7281/api/Content/${news.contentId}`,
+        {
+          method: "PUT",
+          headers: {
+            "content-type": "application/json; charset=utf-8",
+          },
+          body: JSON.stringify(Data),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      const responseData = await response.text();
+      console.log("Response:", responseData);
+      console.log("Edited");
+      // Handle response data
+    } catch (error) {
+      console.error("There was a problem with the PUT request:", error);
+      // Handle error
+    }
+  }
+
+  async function deleteLike(id) {
+    try {
+      const response = await fetch(`https://localhost:7281/api/Likes/${id}`, {
+        method: "DELETE",
+      });
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      const responseData = await response.text();
+      console.log("Response:", responseData);
+      console.log("Edited");
+      // Handle response data
+    } catch (error) {
+      console.error("There was a problem with the DELETE request:", error);
+      // Handle error
+    }
+  }
 
   function handleLike() {
     setLikeColor(!likeColor);
     setLikeCount((likeCount) => (likeColor ? likeCount + 1 : likeCount - 1));
     console.log("it was here");
-    likeColor
-      ? postData({
-          likeId: "",
-          userId: "65ba438c901aa63ea7bec827", //To be changed with the token userid
-          contentId: news.contentId,
-          likeDate: Now,
-        })
-      : {};
+    if (likeColor) {
+      postData({
+        likeId: "",
+        userId: "65ba438c901aa63ea7bec827", //To be changed with the token userid
+        contentId: news.contentId,
+        likeDate: Now,
+      });
+      putData(
+        {
+          ...news,
+          contentLike: news.contentLike + 1,
+        },
+        news
+      );
+    } else {
+      deleteLike(news.contentId); //To be changed with the token userid,
+      let prev = news.contentLike - 1;
+      putData(
+        {
+          ...news,
+          contentLike: prev,
+        },
+        news
+      );
+    }
   }
+
   return (
     // <NavLink to={`/newsletter/${news.id}`}>
     <article className="p-4 border-slate-200 border-2 border-solid w-[400px] h-[700px] rounded-2xl flex flex-col justify-between dark:border-[1px] dark:border-slate-700 ">
@@ -165,7 +230,13 @@ function Card({ news }) {
             <span className="font-semibold">{likeCount}</span>
           </div>
           <div className="flex justify-center items-center gap-2">
-            <button type="button" className="cursor-pointer">
+            <button
+              type="button"
+              className="cursor-pointer"
+              onClick={() => {
+                setCommentSeciton(news.contentId);
+              }}
+            >
               <svg
                 role="img"
                 aria-labelledby="comment-icon-title"
