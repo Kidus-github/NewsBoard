@@ -51,6 +51,7 @@ function CommentModal({ commentSection, setCommentSeciton }) {
     // Handle response data
   }
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   function handleComment() {
     postData({
       commentId: "",

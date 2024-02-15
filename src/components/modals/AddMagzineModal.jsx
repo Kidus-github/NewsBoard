@@ -40,6 +40,7 @@ function AddMagzineModal({ setCreateNews }) {
       description: description,
       url: "string",
       author: "(አዲስ ዋልታ)", //user which is signed in
+      publicationStatus: "pending",
       publicationDate: "2024-02-11T03:43:08.841Z",
       categoryId: "string",
       image: [
@@ -119,6 +120,7 @@ function AddMagzineModal({ setCreateNews }) {
           <Button
             className={"bg-red-300 rounded-lg text-white"}
             onClick={() => {
+              console.log("it was exectuted");
               handleCreate();
             }}
           >

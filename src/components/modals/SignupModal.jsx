@@ -1,6 +1,10 @@
+import { useState } from "react";
 import Input from "../Input";
 import { Button } from "../ui/index";
 function SignupModal({ setIsSignUp }) {
+  const [email, setEmail] = useState("");
+  const [fullname, setFullname] = useState("");
+  const [password, setPassword] = useState("");
   return (
     <div className=" h-full flex items-center justify-center fixed left-0 top-0 select-none w-[100%] z-[999] bg-[#000000a4]">
       <section className="  select-text max-h-[95%]  relative z-[9991]">
@@ -197,16 +201,45 @@ function SignupModal({ setIsSignUp }) {
             </div>
             <div className="bg-[#ffffff] rounded-r-lg pt-[80px] px-[48px] pb-[24px]  flex-1">
               <form action="" className="mb-[48px] flex flex-col gap-4">
-                <div className="bg-[#f7f7f7] rounded-sm text-left">
-                  <Input type="email" placeholder="Email " />
+                <div>
+                  <input
+                    type="email"
+                    placeholder="Email "
+                    value={email}
+                    onChange={(e) => {
+                      setEmail(e.target.value);
+                    }}
+                    className="appearance-none border-solid  caret-[#f52828] text-black font-medium h-[44px] py-2 px-[12px] w-full dark:text-white border-white bg-[#f7f7f7] rounded-lg text-left"
+                  />
                 </div>
-                <div className="bg-[#f7f7f7] rounded-sm text-left">
-                  <Input type="text" placeholder="Full Name" />
+                <div>
+                  <input
+                    type="text"
+                    placeholder="Full Name"
+                    value={fullname}
+                    onChange={(e) => {
+                      setFullname(e.target.value);
+                    }}
+                    className="appearance-none border-solid  caret-[#f52828] text-black font-medium h-[44px] py-2 px-[12px] w-full dark:text-white border-white bg-[#f7f7f7] rounded-lg text-left"
+                  />
                 </div>
-                <div className="bg-[#f7f7f7] rounded-sm text-left">
-                  <Input type="text" placeholder="Password" />
+                <div>
+                  <input
+                    type="text"
+                    placeholder="Password"
+                    value={password}
+                    onChange={(e) => {
+                      setPassword(e.target.value);
+                    }}
+                    className="appearance-none border-solid  caret-[#f52828] text-black font-medium h-[44px] py-2 px-[12px] w-full dark:text-white border-white bg-[#f7f7f7] rounded-lg text-left"
+                  />
                 </div>
-                <Button className="w-full text-white bg-[#f5262650] hover:bg-[#ee2a2c]">
+                <Button
+                  className="w-full text-white bg-[#f5262650] hover:bg-[#ee2a2c] "
+                  onClick={() => {
+                    console.log("email" + email);
+                  }}
+                >
                   Continue
                 </Button>
               </form>
