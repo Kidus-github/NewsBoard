@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button } from "../ui/index";
-function LoginModal({ setIsLogIn, setLogIn }) {
+function LoginModal({ setIsLogIn }) {
   const handleLogin = async (email, password) => {
     try {
       const response = await fetch("https://localhost:7281/api/Auth/login", {
@@ -173,7 +173,6 @@ function LoginModal({ setIsLogIn, setLogIn }) {
               className="bg-[#f528284b] border-solid border-0 border-[#f528282f] text-white w-full py-[8px] px-[12px] text-lg hover:bg-[#ee2a2c]"
               onClick={() => {
                 setIsLogIn(false);
-                setLogIn(true);
                 handleLogin(email, password);
               }}
             >

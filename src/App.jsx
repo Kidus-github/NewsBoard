@@ -5,21 +5,39 @@ import SignedInPage from "./pages/SignedInPage";
 import Profile from "./pages/Profile";
 import Following from "./pages/Following";
 import NewsLetter from "./pages/NewsLetter";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 function App() {
-  const [LogIn, setLogIn] = useState(
-    localStorage.getItem("LogIn")
-      ? localStorage.getItem("LogIn") === "false"
-        ? false
-        : true
-      : false
-  );
-  const [theme, setTheme] = useState(false);
+  var token = useRef();
+  const [user, setUser] = useState({});
+  useEffect(() => {
+    token.current = localStorage.getItem("token");
+  }, []);
 
   useEffect(() => {
-    localStorage.setItem("LogIn", LogIn.toString());
-  }, [LogIn]);
+    fetch(
+      `https://localhost:7281/api/Auth/userId?token=${localStorage.getItem(
+        "token"
+      )}`
+    )
+      .then((res) => {
+        return res.text();
+      })
+      .then((data) => {
+        fetch(`https://localhost:7281/api/User/${String(data)}`)
+          .then((res) => res.json())
+          .then((data) => {
+            setUser(data);
+            console.log("logedin user");
+          });
+      })
+      .catch(() => {
+        console.log("data failed");
+      });
+  }, [token]);
+
+  const [theme, setTheme] = useState(false);
+
   useEffect(() => {
     if (theme === "dark") {
       document.documentElement.classList.add("dark");
@@ -33,12 +51,16 @@ function App() {
         <Route
           path="/"
           element={
-            LogIn ? (
-              <SignedInPage theme={theme} setTheme={setTheme}>
+            token ? (
+              <SignedInPage
+                theme={theme}
+                setTheme={setTheme}
+                user={user.profilePicture}
+              >
                 <ForYouPage />
               </SignedInPage>
             ) : (
-              <UnSignedPage setLogIn={setLogIn} LogIn={LogIn} />
+              <UnSignedPage />
             )
           }
         >
@@ -56,15 +78,23 @@ function App() {
         <Route
           path="profile"
           element={
-            <SignedInPage theme={theme} setTheme={setTheme}>
-              <Profile />
+            <SignedInPage
+              theme={theme}
+              setTheme={setTheme}
+              user={user.profilePicture}
+            >
+              <Profile user={user} />
             </SignedInPage>
           }
         />
         <Route
           path="following"
           element={
-            <SignedInPage theme={theme} setTheme={setTheme}>
+            <SignedInPage
+              theme={theme}
+              setTheme={setTheme}
+              user={user.profilePicture}
+            >
               <Following />
             </SignedInPage>
           }
@@ -72,12 +102,16 @@ function App() {
         <Route
           path="newsletter/:id"
           element={
-            LogIn ? (
-              <SignedInPage theme={theme} setTheme={setTheme}>
+            token ? (
+              <SignedInPage
+                theme={theme}
+                setTheme={setTheme}
+                user={user.profilePicture}
+              >
                 <NewsLetter />
               </SignedInPage>
             ) : (
-              <UnSignedPage setLogIn={setLogIn} LogIn={LogIn}>
+              <UnSignedPage>
                 <NewsLetter />
               </UnSignedPage>
             )

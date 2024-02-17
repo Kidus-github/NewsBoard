@@ -5,6 +5,69 @@ function SignupModal({ setIsSignUp }) {
   const [email, setEmail] = useState("");
   const [fullname, setFullname] = useState("");
   const [password, setPassword] = useState("");
+  const [eye, setEye] = useState(false);
+  let Now = new Date("2022-02-02T12:00:00");
+  const SeparetName = separateNames(fullname);
+
+  function postData(Data) {
+    const response = fetch("https://localhost:7281/api/User", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json; charset=utf-8",
+      },
+      body: JSON.stringify(Data),
+    }).then(() => {
+      console.log("Created");
+    });
+
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+
+    const responseData = response.text();
+    console.log("Response:", responseData);
+    // Handle response data
+  }
+  function separateNames(fullName) {
+    const names = fullName.split(" ");
+    const firstName = names[0];
+    const lastName = names[names.length - 1];
+    let middleName = null;
+    if (names.length > 2) {
+      middleName = names.slice(1, -1).join(" ");
+    }
+    return { firstName, middleName, lastName };
+  }
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  function handleSignUp() {
+    postData({
+      userId: "",
+      userName: SeparetName.firstName + email,
+      email: email,
+      fname: SeparetName.firstName,
+      mname: SeparetName.middleName || "None",
+      lname: SeparetName.lastName,
+      password: password,
+      profilePicture: "/src/assets/gray_person.png",
+      preferenceid: "string",
+      registrationDate: Now,
+      bio: "string",
+      country: "string",
+      lastLoginDate: "2024-02-16T02:34:53.881Z",
+      language: "English",
+      dateOfBirth: "2024-02-16T02:34:53.881Z",
+      gender: "string",
+      phoneNumber: "string",
+      address: "string",
+      profileVisibility: "string",
+      profile_theme: "light",
+      notificationPreferencesID: "string",
+      twoFactorAuthEnabled: true,
+      lastPasswordChangeDate: "2024-02-16T02:34:53.881Z",
+    });
+  }
+
   return (
     <div className=" h-full flex items-center justify-center fixed left-0 top-0 select-none w-[100%] z-[999] bg-[#000000a4]">
       <section className="  select-text max-h-[95%]  relative z-[9991]">
@@ -202,42 +265,122 @@ function SignupModal({ setIsSignUp }) {
             <div className="bg-[#ffffff] rounded-r-lg pt-[80px] px-[48px] pb-[24px]  flex-1">
               <form action="" className="mb-[48px] flex flex-col gap-4">
                 <div>
-                  <input
+                  <Input
                     type="email"
                     placeholder="Email "
                     value={email}
                     onChange={(e) => {
                       setEmail(e.target.value);
                     }}
-                    className="appearance-none border-solid  caret-[#f52828] text-black font-medium h-[44px] py-2 px-[12px] w-full dark:text-white border-white bg-[#f7f7f7] rounded-lg text-left"
+                    classname={"bg-[#f7f7f7] rounded-lg text-left border-white"}
                   />
                 </div>
                 <div>
-                  <input
+                  <Input
                     type="text"
                     placeholder="Full Name"
                     value={fullname}
                     onChange={(e) => {
                       setFullname(e.target.value);
                     }}
-                    className="appearance-none border-solid  caret-[#f52828] text-black font-medium h-[44px] py-2 px-[12px] w-full dark:text-white border-white bg-[#f7f7f7] rounded-lg text-left"
+                    classname={"bg-[#f7f7f7] rounded-lg text-left border-white"}
                   />
                 </div>
-                <div>
-                  <input
-                    type="text"
+                <div className="flex items-center bg-[#f7f7f7] rounded-lg ">
+                  <Input
+                    type={`${!eye ? "password" : "text"}`}
                     placeholder="Password"
                     value={password}
                     onChange={(e) => {
                       setPassword(e.target.value);
                     }}
-                    className="appearance-none border-solid  caret-[#f52828] text-black font-medium h-[44px] py-2 px-[12px] w-full dark:text-white border-white bg-[#f7f7f7] rounded-lg text-left"
+                    classname={
+                      "bg-[#f7f7f7] rounded-lg text-left flex-1 border-transparent "
+                    }
                   />
+                  <div
+                    className="eye p-2"
+                    onClick={() => {
+                      setEye(!eye);
+                    }}
+                  >
+                    {!eye ? (
+                      <div className="close">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="20px"
+                          height="20px"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                        >
+                          <path
+                            d="M4.5 15.5C7.5 9 16.5 9 19.5 15.5"
+                            stroke="#6f1414"
+                            strokeWidth="1.5"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                          <path
+                            d="M16.8162 12.1825L19.5 8.5"
+                            stroke="#6f1414"
+                            strokeWidth="1.5"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                          <path
+                            d="M12 10.625V7"
+                            stroke="#6f1414"
+                            strokeWidth="1.5"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                          <path
+                            d="M7.18383 12.1825L4.5 8.5"
+                            stroke="#6f1414"
+                            strokeWidth="1.5"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                      </div>
+                    ) : (
+                      <div className="open">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="#ad2224"
+                          version="1.1"
+                          id="Capa_1"
+                          width="20px"
+                          height="20px"
+                          viewBox="0 0 60.254 60.254"
+                        >
+                          <g>
+                            <g>
+                              <g>
+                                <path d="M29.008,48.308c-16.476,0-28.336-17.029-28.833-17.754c-0.248-0.36-0.231-0.841,0.039-1.184     c0.561-0.712,13.906-17.424,29.913-17.424c17.953,0,29.474,16.769,29.956,17.482c0.23,0.342,0.229,0.79-0.007,1.129     c-0.475,0.688-11.842,16.818-29.899,17.721C29.786,48.297,29.396,48.308,29.008,48.308z M2.267,30.028     c2.326,3.098,13.553,16.967,27.812,16.254c15.237-0.76,25.762-13.453,27.938-16.3c-2.175-2.912-12.811-16.035-27.889-16.035     C16.7,13.947,4.771,27.084,2.267,30.028z" />
+                              </g>
+                              <g>
+                                <path d="M30.127,37.114c-3.852,0-6.986-3.135-6.986-6.986c0-3.851,3.134-6.985,6.986-6.985s6.986,3.135,6.986,6.985     C37.113,33.979,33.979,37.114,30.127,37.114z" />
+                              </g>
+                              <g>
+                                <path d="M30.127,42.614c-6.885,0-12.486-5.602-12.486-12.486c0-6.883,5.602-12.485,12.486-12.485     c6.884,0,12.486,5.602,12.486,12.485C42.613,37.012,37.013,42.614,30.127,42.614z M30.127,19.641     c-5.782,0-10.486,4.704-10.486,10.486c0,5.781,4.704,10.485,10.486,10.485s10.486-4.704,10.486-10.485     C40.613,24.345,35.91,19.641,30.127,19.641z" />
+                              </g>
+                            </g>
+                          </g>
+                        </svg>
+                      </div>
+                    )}
+                  </div>
                 </div>
                 <Button
                   className="w-full text-white bg-[#f5262650] hover:bg-[#ee2a2c] "
-                  onClick={() => {
-                    console.log("email" + email);
+                  onClick={(e) => {
+                    e.preventDefault();
+                    if (email && fullname && password) handleSignUp();
+                    setEmail("");
+                    setFullname("");
+                    setPassword("");
+                    setIsSignUp(false);
                   }}
                 >
                   Continue

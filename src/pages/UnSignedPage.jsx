@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import SignupModal from "../components/modals/SignupModal";
 import LoginModal from "../components/modals/LoginModal";
 import UnsignedIndexBody from "../components/UnsignedIndexBody";
-function UnSignedPage({ children, setLogIn, LogIn }) {
+function UnSignedPage({ children }) {
   const [news, setNews] = useState([]);
   const [category, setCategory] = useState("news");
   const [isSignUp, setIsSignUp] = useState(false);
@@ -34,9 +34,7 @@ function UnSignedPage({ children, setLogIn, LogIn }) {
       )}
       <Footer />
       {isSignUp && <SignupModal setIsSignUp={setIsSignUp} />}
-      {isLogIn && (
-        <LoginModal setIsLogIn={setIsLogIn} setLogIn={setLogIn} LogIn={LogIn} />
-      )}
+      {isLogIn && <LoginModal setIsLogIn={setIsLogIn} />}
     </>
   );
 }

@@ -1,13 +1,15 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
+
 import DropDown from "../components/DropDown";
 import { Footer, HomeHeader } from "../components/ui/index";
 import CreateNewsModal from "../components/modals/CreateNewsModal";
-function SignedInPage({ children, theme, setTheme }) {
+function SignedInPage({ children, theme, setTheme, user }) {
   const [dropDown, setDropDown] = useState(false);
   const [create, setCreate] = useState(false);
+
   const bodyStyle = document.body.style;
   create ? (bodyStyle.overflowY = "hidden") : (bodyStyle.overflowY = "auto");
-  useEffect(() => {}, []); //if the user has a profile theam of dark it will be dark or else light
+
   return (
     <div className="dark:bg-black">
       <HomeHeader
@@ -15,6 +17,7 @@ function SignedInPage({ children, theme, setTheme }) {
         dropDown={dropDown}
         setCreate={setCreate}
         create={create}
+        user={user}
       />
       {children}
       <Footer />

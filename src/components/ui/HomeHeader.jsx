@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
-function HomeHeader({ setDropDown, dropDown, setCreate, create }) {
+function HomeHeader({ setDropDown, dropDown, setCreate, create, user }) {
   return (
     <div className="flex items-center justify-between px-1 border-solid border-0 border-b-2 border-slate-100 fixed w-full z-50 top-0 bg-white dark:text-white dark:bg-black dark:border-b-[1px] dark:border-slate-500">
       <NavLink to={"/"}>
@@ -104,19 +104,12 @@ function HomeHeader({ setDropDown, dropDown, setCreate, create }) {
           </svg>
         </div>
         <div
-          className="cursor-pointer w-9 h-9 border-solid rounded-full border border-slate-300"
+          className="cursor-pointer w-9 h-9 border-solid rounded-full border border-slate-300 flex items-center justify-center"
           onClick={() => {
             setDropDown(!dropDown);
           }}
         >
-          <svg width="35" height="35" viewBox="0 5 24 24" fill="none">
-            <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
-              <g fill="#999">
-                <ellipse cx="12" cy="10.6368" rx="4.5" ry="4.1472"></ellipse>
-                <path d="M21.5877197,24.1546951 C21.5877197,19.9823522 17.2951514,16.6 12,16.6 C6.70484863,16.6 2.41228031,19.9823522 2.41228031,24.1546951 C2.41228031,24.1546951 21.5877197,24.1546951 21.5877197,24.1546951 Z"></path>
-              </g>
-            </g>
-          </svg>
+          <img src={user} className="w-[30px] h-[30px] rounded-full" />
         </div>
       </div>
     </div>

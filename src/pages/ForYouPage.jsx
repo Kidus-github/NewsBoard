@@ -15,6 +15,7 @@ function ForYouPage() {
     <div className="dark:bg-black">
       <div className="relative top-16 dark:bg-black dark:text-white">
         <ForYouMenu niche={niche} setNiche={setNiche} />
+        {/* C:\Users\kidus\Desktop\NewsBoard\src\assets\gray_person.png */}
         <NewsListSection news={news} />
         {niche && <PersonalizedForYouModal niche={niche} setNiche={setNiche} />}
       </div>

@@ -10,10 +10,11 @@ function Card({ news, setCommentSeciton }) {
   let Now = new Date("2022-02-02T12:00:00");
   useEffect(() => {
     fetch(`https://localhost:7281/api/Likes/${news.contentId}`)
-      .then((res) => res.json())
+      .then((res) => res.text())
       .then((data) => {
         setLikeCount(parseInt(data));
-        setLikeColor(false);
+
+        setLikeColor(parseInt(data) != 0 ? false : true);
       })
       .catch(() => {
         console.log("dataFailed");
@@ -25,7 +26,6 @@ function Card({ news, setCommentSeciton }) {
     fetch(`https://localhost:7281/api/Comment/CountByid?id=${news.contentId}`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setCommentCount(parseInt(data));
       })
       .catch(() => {
