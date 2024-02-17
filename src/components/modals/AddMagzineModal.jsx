@@ -1,12 +1,31 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Button } from "../ui/index";
+import { useEffect } from "react";
 
 function AddMagzineModal({ setCreateNews }) {
   const [title, setTitle] = useState("");
-  let [titleCount, setTitleCount] = useState(0);
+  const [titleCount, setTitleCount] = useState(0);
   const [description, setDescription] = useState("");
   const [descriptionCount, setDescriptionCount] = useState(0);
+  let Author = useRef();
   let Now = new Date("2022-02-02T12:00:00");
+  useEffect(() => {
+    fetch(
+      `https://localhost:7281/api/Auth/userId?token=${localStorage.getItem(
+        "token"
+      )}`
+    )
+      .then((res) => res.text())
+      .then((data) => {
+        console.log(data);
+        fetch(`https://localhost:7281/api/User/GetUserNametBYid?id=${data}`)
+          .then((res) => res.text())
+          .then((data) => (Author.current = data))
+          .catch(() => console.log("dataFailed"));
+        console.log(Author.current);
+      })
+      .catch(() => console.log("dataFailed"));
+  }, []);
 
   function postData(Data) {
     try {
@@ -39,7 +58,7 @@ function AddMagzineModal({ setCreateNews }) {
       title: title,
       description: description,
       url: "string",
-      author: "(አዲስ ዋልታ)", //user which is signed in
+      author: Author.current,
       publicationStatus: "pending",
       publicationDate: "2024-02-11T03:43:08.841Z",
       categoryId: "string",
@@ -122,6 +141,7 @@ function AddMagzineModal({ setCreateNews }) {
             onClick={() => {
               console.log("it was exectuted");
               handleCreate();
+              handleCancel();
             }}
           >
             Create

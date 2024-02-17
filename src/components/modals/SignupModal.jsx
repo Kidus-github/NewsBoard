@@ -43,7 +43,7 @@ function SignupModal({ setIsSignUp }) {
   function handleSignUp() {
     postData({
       userId: "",
-      userName: SeparetName.firstName + email,
+      userName: SeparetName.firstName,
       email: email,
       fname: SeparetName.firstName,
       mname: SeparetName.middleName || "None",
