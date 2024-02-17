@@ -1,4 +1,7 @@
-function CreateCard({ title }) {
+import { useNavigate } from "react-router-dom";
+
+function CreateCard({ title, contentId }) {
+  const navigate = useNavigate();
   return (
     <div className="flex flex-col justify-between w-[200px] h-[200px] bg-[#ab1c1c] text-white rounded-md p-2">
       <span className="uppercase font-bold text-lg">{title}</span>
@@ -56,30 +59,37 @@ function CreateCard({ title }) {
             </g>
           </g>
         </svg>
-        <svg
-          role="img"
-          aria-labelledby="edit-icon-title"
-          width="24"
-          height="24"
-          viewBox="0 0 22 22"
+        <button
+          className="cursor-pointer"
+          onClick={() => {
+            navigate(`/publish/${contentId}`);
+          }}
         >
-          <title id="edit-icon-title">Edit</title>
-          <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
-            <g stroke="#fff">
-              <g transform="translate(10.500000, 11.500000) rotate(-315.000000) translate(-10.500000, -11.500000) translate(8.000000, 1.000000)">
-                <path d="M1.00674696,-1.77635684e-15 C0.450735967,-1.77635684e-15 5.86197757e-14,0.443446793 5.86197757e-14,0.999751629 L5.86197757e-14,16.5789474 L2.54785156,20.4473684 L5.09570313,16.5789474 L5.09570313,0.999751629 C5.09570313,0.447604051 4.64349347,-1.77635684e-15 4.08895616,-1.77635684e-15 L1.00674696,-1.77635684e-15 Z"></path>
-                <path
-                  d="M0.509570313,16.0263158 L4.58613281,16.0263158"
-                  strokeLinecap="square"
-                ></path>
-                <path
-                  d="M1.42464193,3.5 L4.5,3.5"
-                  strokeLinecap="square"
-                ></path>
+          <svg
+            role="img"
+            aria-labelledby="edit-icon-title"
+            width="24"
+            height="24"
+            viewBox="0 0 22 22"
+          >
+            <title id="edit-icon-title">Edit</title>
+            <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
+              <g stroke="#fff">
+                <g transform="translate(10.500000, 11.500000) rotate(-315.000000) translate(-10.500000, -11.500000) translate(8.000000, 1.000000)">
+                  <path d="M1.00674696,-1.77635684e-15 C0.450735967,-1.77635684e-15 5.86197757e-14,0.443446793 5.86197757e-14,0.999751629 L5.86197757e-14,16.5789474 L2.54785156,20.4473684 L5.09570313,16.5789474 L5.09570313,0.999751629 C5.09570313,0.447604051 4.64349347,-1.77635684e-15 4.08895616,-1.77635684e-15 L1.00674696,-1.77635684e-15 Z"></path>
+                  <path
+                    d="M0.509570313,16.0263158 L4.58613281,16.0263158"
+                    strokeLinecap="square"
+                  ></path>
+                  <path
+                    d="M1.42464193,3.5 L4.5,3.5"
+                    strokeLinecap="square"
+                  ></path>
+                </g>
               </g>
             </g>
-          </g>
-        </svg>
+          </svg>
+        </button>
       </span>
     </div>
   );
