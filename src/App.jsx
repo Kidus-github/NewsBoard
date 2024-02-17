@@ -6,14 +6,14 @@ import Profile from "./pages/Profile";
 import Following from "./pages/Following";
 import NewsLetter from "./pages/NewsLetter";
 import { useEffect, useRef, useState } from "react";
+import PublishContent from "./pages/PublishContent";
 
 function App() {
-  var token = useRef();
+  var token = localStorage.getItem("token");
   const [user, setUser] = useState({});
-  useEffect(() => {
-    token.current = localStorage.getItem("token");
-  }, []);
-
+  // useEffect(() => {
+  //   token.current = localStorage.getItem("token");
+  // }, []);
   useEffect(() => {
     fetch(
       `https://localhost:7281/api/Auth/userId?token=${localStorage.getItem(
@@ -96,6 +96,18 @@ function App() {
               user={user.profilePicture}
             >
               <Following />
+            </SignedInPage>
+          }
+        />
+        <Route
+          path="publish/:id"
+          element={
+            <SignedInPage
+              theme={theme}
+              setTheme={setTheme}
+              user={user.profilePicture}
+            >
+              <PublishContent />
             </SignedInPage>
           }
         />
