@@ -70,7 +70,7 @@ function ProfileSection({ user }) {
         </div>
       </div>
       <div className="my-8 px-12 h-[2px] bg-slate-200 dark:h-[1px] dark:bg-slate-500 "></div>
-      <ul className="flex gap-8 mb-24">
+      <ul className="flex gap-8 mb-24 flex-wrap">
         <ul className="flex flex-col justify-between w-[200px] h-[200px] bg-[#bcbcbc] text-white rounded-md p-2">
           <span className="uppercase font-bold text-lg">
             Create a new magazine
@@ -79,7 +79,11 @@ function ProfileSection({ user }) {
         </ul>
         {news.map((content) => (
           <li key={content.contentId}>
-            <CreateCard title={content.title} contentId={content.contentId} />
+            <CreateCard
+              title={content.title}
+              contentId={content.contentId}
+              img={content.image[0]}
+            />
           </li>
         ))}
       </ul>

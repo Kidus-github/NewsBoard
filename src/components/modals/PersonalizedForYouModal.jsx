@@ -1,4 +1,105 @@
 function PersonalizedForYouModal({ niche, setNiche }) {
+  const follow = [
+    "#NEWS",
+    "#SCIENCE",
+    "#TECHNOLOGY",
+    "#BUSINESS",
+    "#POLITICS",
+    "#TRAVEL",
+    "#PHOTOGRAPHY",
+    "#PERSONAL FINANCE",
+    "#CLIMATE CHANGE",
+    "#HEALTH",
+    "#SPORTS",
+    "#ENTERTAINMENT",
+    "#LIFESTYLE",
+    "#HOME & GARDEN",
+    "#SELF-IMPROVEMENT",
+    "#COMPUTER SCIENCE",
+    "#BLACK HISTORY",
+    "#WORLD ECONOMY",
+    "#CELEBRITY NEWS",
+    "#DIY",
+    "#BOOKS",
+    "#MUSIC",
+    "#STYLE",
+    "#DESIGN",
+    "#RUSSIA-UKRAINE",
+    "#BREAKTHROUGHS",
+    "#PSYCHOLOGY",
+    "#ENTREPRENEURSHIP",
+    "#CONSERVATIVE VIEW",
+    "#LIBERAL VIEW",
+    "#OUTDOORS",
+    "#FITNESS",
+    "#PRODUCTIVITY",
+    "#HOW TO{`'`}S",
+    "#NUTRITION",
+    "#SLEEP",
+    "#DOGS",
+    "#TV",
+    "#FOREIGN POLICY",
+    "#INNOVATION",
+    "#CALIFORNIA",
+    "#RELATIONSHIPS",
+    "#WAR",
+    "#MILITARY",
+    "#NATURE",
+    "#AGING",
+    "#ADVENTURE TRAVLE",
+    "#INVESTING",
+    "#APPLE",
+    "#SHOPPING",
+    "#HUMAN INTEREST",
+    "#THE FUTURE",
+    "#IDEAS",
+    "#RUNNING",
+    "#STREET ART",
+    "#CREATIVITY",
+    "#STARTUPS",
+    "#HISTORY",
+    "#SUSTAINABILITY",
+    "#CRAFTING",
+    "#ARCHITECTURE",
+    "#GADGETS",
+    "#CULTURE",
+    "#BEAUTY",
+    "#COFFEE",
+    "#GAMING",
+    "#THE BRAIN",
+    "#PARENTING",
+    "#HUMOR",
+    "#EDUCATION",
+    "#AUTOS",
+    "#FOOTBALL (U.S.)",
+    "#ASTRONOMY",
+    "#SOCIAL MEDIA",
+    "#NEW YORK CITY",
+    "#FLORIDA",
+    "#NATIONAL SECURITY",
+    "#CHICAGO",
+    "#BASKETBALL",
+    "#BAKING",
+    "#DOCUMENTARIES",
+    "#RACE & ETHNICITY",
+    "#WOMEN'S HEALTH",
+    "#TEXAS",
+    "#ANDROID NEWS",
+    "#INTERNET",
+    "#AFRICAN AMERICAN VOICES",
+    "#ANIMAL BEHAVIOR",
+    "#ENERGY",
+    "#ARTIFICIAL INTELLIGENCE",
+    "#SCIENTIFIC RESEARCH",
+    "#CRYPTOCURRENCY",
+    "#MENTAL HEALTH",
+    "#TIME MANAGEMENT",
+    "#BASEBALL",
+    "#URBAN PLANNING",
+    "#TRAVEL",
+    "PHOTOGRAPHY",
+    "#ART",
+  ];
   return (
     <div className=" h-full flex items-center justify-center fixed left-0 top-0 select-none w-[100%] z-[999] bg-[#000000a4]">
       <div className="flex items-center justify-center">
@@ -52,123 +153,12 @@ function PersonalizedForYouModal({ niche, setNiche }) {
               <h3 className="mt-4">More topics to follow</h3>
             </div>
             <div className="HashLists flex flex-wrap overflow-y-scroll overflow-x-hidden p-4 h-[400px] gap-1 mb-2">
-              <div className="px-4 rounded-lg bg-slate-200 ">#NEWS</div>
-              <div className="px-4 rounded-lg bg-slate-200 ">#SCIENCE</div>
-              <div className="px-4 rounded-lg bg-slate-200 ">#TECHNOLOGY</div>
-              <div className="px-4 rounded-lg bg-slate-200 ">#BUSINESS</div>
-              <div className="px-4 rounded-lg bg-slate-200 ">#POLITICS</div>
-              <div className="px-4 rounded-lg bg-slate-200 ">#TRAVEL</div>
-              <div className="px-4 rounded-lg bg-slate-200 ">#PHOTOGRAPHY</div>
-              <div className="px-4 rounded-lg bg-slate-200 ">
-                #PERSONAL FINANCE
-              </div>
-              <div className="px-4 rounded-lg bg-slate-200 ">
-                #CLIMATE CHANGE
-              </div>
-              <div className="px-4 rounded-lg bg-slate-200 ">#HEALTH</div>
-              <div className="px-4 rounded-lg bg-slate-200 ">#SPORTS</div>
-              <div className="px-4 rounded-lg bg-slate-200 ">
-                #ENTERTAINMENT
-              </div>
-              <div className="px-4 rounded-lg bg-slate-200 ">#LIFESTYLE</div>
-              <div className="px-4 rounded-lg bg-slate-200 ">
-                #HOME & GARDEN
-              </div>
-              <div className="px-4 rounded-lg bg-slate-200 ">
-                #SELF-IMPROVEMENT
-              </div>
-              <div className="px-4 rounded-lg bg-slate-200 ">
-                #COMPUTER SCIENCE
-              </div>
-              <div className="px-4 rounded-lg bg-slate-200 ">
-                #BLACK HISTORY
-              </div>
-              <div className="px-4 rounded-lg bg-slate-200 ">
-                #WORLD ECONOMY
-              </div>
-              <div className="px-4 rounded-lg bg-slate-200 ">
-                #CELEBRITY NEWS
-              </div>
-              <div className="px-4 rounded-lg bg-slate-200 ">#DIY</div>
-              <div className="px-4 rounded-lg bg-slate-200 ">#BOOKS</div>
-              <div className="px-4 rounded-lg bg-slate-200 ">#MUSIC</div>
-              <div className="px-4 rounded-lg bg-slate-200 ">#STYLE</div>
-              <div className="px-4 rounded-lg bg-slate-200 ">#DESIGN</div>
-              <div className="px-4 rounded-lg bg-slate-200 ">
-                #RUSSIA-UKRAINE WAR
-              </div>
-              <div className="px-4 rounded-lg bg-slate-200 ">
-                #BREAKTHROUGHS
-              </div>
-              <div className="px-4 rounded-lg bg-slate-200 ">#PSYCHOLOGY</div>
-              <div className="px-4 rounded-lg bg-slate-200 ">
-                #ENTREPRENEURSHIP
-              </div>
-              <div className="px-4 rounded-lg bg-slate-200 ">
-                #CONSERVATIVE VIEW
-              </div>
-              <div className="px-4 rounded-lg bg-slate-200 ">#LIBERAL VIEW</div>
-              <div className="px-4 rounded-lg bg-slate-200 ">#OUTDOORS</div>
-              <div className="px-4 rounded-lg bg-slate-200 ">#FITNESS</div>
-              <div className="px-4 rounded-lg bg-slate-200 ">#PRODUCTIVITY</div>
-              <div className="px-4 rounded-lg bg-slate-200 ">#HOW TO{`'`}S</div>
-              <div className="px-4 rounded-lg bg-slate-200 ">#SPACE</div>
-              <div className="px-4 rounded-lg bg-slate-200 ">#NUTRITION</div>
-              <div className="px-4 rounded-lg bg-slate-200 ">#SLEEP</div>
-              <div className="px-4 rounded-lg bg-slate-200 ">#DOGS</div>
-              <div className="px-4 rounded-lg bg-slate-200 ">#TV</div>
-              <div className="px-4 rounded-lg bg-slate-200 ">
-                #FOREIGN POLICY
-              </div>
-              <div className="px-4 rounded-lg bg-slate-200 ">#INNOVATION</div>
-              <div className="px-4 rounded-lg bg-slate-200 ">#CALIFORNIA</div>
-              <div className="px-4 rounded-lg bg-slate-200 ">
-                #RELATIONSHIPS
-              </div>
-              <div className="px-4 rounded-lg bg-slate-200 ">#MILITARY</div>
-              <div className="px-4 rounded-lg bg-slate-200 ">#NATURE</div>
-              <div className="px-4 rounded-lg bg-slate-200 ">#AGING</div>
-              <div className="px-4 rounded-lg bg-slate-200 ">
-                #ADVENTURE TRAVEL
-              </div>
-              <div className="px-4 rounded-lg bg-slate-200 ">
-                #INVESTING #APPLE
-              </div>
-              <div className="px-4 rounded-lg bg-slate-200 ">#SHOPPING</div>
-              <div className="px-4 rounded-lg bg-slate-200 ">
-                #HUMAN INTEREST
-              </div>
-              <div className="px-4 rounded-lg bg-slate-200 ">#THE FUTURE</div>
-              <div className="px-4 rounded-lg bg-slate-200 ">#IDEAS</div>
-              <div className="px-4 rounded-lg bg-slate-200 ">#RUNNING</div>
-              <div className="px-4 rounded-lg bg-slate-200 ">#STREET ART</div>
-              <div className="px-4 rounded-lg bg-slate-200 ">#CREATIVITY</div>
-              <div className="px-4 rounded-lg bg-slate-200 ">#STARTUPS</div>
-              <div className="px-4 rounded-lg bg-slate-200 ">#HISTORY</div>
-              <div className="px-4 rounded-lg bg-slate-200 ">
-                #SUSTAINABILITY
-              </div>
-              <div className="px-4 rounded-lg bg-slate-200 ">#CRAFTING</div>
-              <div className="px-4 rounded-lg bg-slate-200 ">#ARCHITECTURE</div>
-              <div className="px-4 rounded-lg bg-slate-200 ">#GADGETS</div>
-              <div className="px-4 rounded-lg bg-slate-200 ">#CULTURE</div>
-              <div className="px-4 rounded-lg bg-slate-200 ">#BEAUTY</div>
-              <div className="px-4 rounded-lg bg-slate-200 ">#COFFEE</div>
-              <div className="px-4 rounded-lg bg-slate-200 ">#GAMING</div>
-              <div className="px-4 rounded-lg bg-slate-200 ">#THE BRAIN</div>
-              <div className="px-4 rounded-lg bg-slate-200 ">#PARENTING</div>
-              <div className="px-4 rounded-lg bg-slate-200 ">#HUMOR</div>
-              <div className="px-4 rounded-lg bg-slate-200 ">#EDUCATION</div>
-              <div className="px-4 rounded-lg bg-slate-200 ">#AUTOS</div>
+              {follow.map((personalize, i) => (
+                <div key={i} className="px-4 rounded-lg bg-slate-200">
+                  {personalize}
+                </div>
+              ))}
             </div>
-
-            {/* #FOOTBALL (U.S.) #ASTRONOMY #SOCIAL
-            MEDIA #NEW YORK CITY #FLORIDA #NATIONAL SECURITY #CHICAGO
-            #BASKETBALL #BAKING #DOCUMENTARIES #RACE & ETHNICITY #WOMEN'S HEALTH
-            #TEXAS #ANDROID NEWS #INTERNET #AFRICAN AMERICAN VOICES #ANIMAL
-            BEHAVIOR #ENERGY #ARTIFICIAL INTELLIGENCE #SCIENTIFIC RESEARCH
-            #CRYPTOCURRENCY #MENTAL HEALTH #TIME MANAGEMENT #BASEBALL #URBAN
-            PLANNING #TRAVEL PHOTOGRAPHY #ART */}
           </div>
         </div>
       </div>

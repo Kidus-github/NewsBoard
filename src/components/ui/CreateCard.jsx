@@ -1,10 +1,14 @@
 import { useNavigate } from "react-router-dom";
 
-function CreateCard({ title, contentId }) {
+function CreateCard({ title, contentId, img }) {
   const navigate = useNavigate();
   return (
-    <div className="flex flex-col justify-between w-[200px] h-[200px] bg-[#ab1c1c] text-white rounded-md p-2">
-      <span className="uppercase font-bold text-lg">{title}</span>
+    <div
+      className={`flex flex-col justify-between w-[200px] h-[200px]  text-white rounded-md p-2 ${"bg-[#ab1c1c]"}`} //img ? "bg-[url('" + img + "')]" :
+    >
+      <span className="uppercase font-bold text-lg">
+        {title.length > 40 ? `${title.slice(0, 40)}...` : title}
+      </span>
       <span className="flex justify-between">
         <svg
           aria-labelledby="analytics-icon-title"
