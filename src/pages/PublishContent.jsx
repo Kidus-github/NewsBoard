@@ -211,6 +211,10 @@ function PublishContent() {
       });
   }
 
+  function goBack() {
+    navigate("/profile");
+  }
+
   function putData(Data) {
     fetch(`https://localhost:7281/api/Content/${id}`, {
       method: "PUT",
@@ -258,8 +262,11 @@ function PublishContent() {
     // console.log(
     //   selectedFile.type.startsWith("video/") ? String(selectedFile.name) : ""
     // );
+    goBack();
   };
-  function handleClose() {}
+  function handleClose(key) {
+    setKeyword(keyword.filter((item) => item !== key));
+  }
 
   return (
     <div className="p-10">
@@ -274,7 +281,7 @@ function PublishContent() {
           </div>
           <div className="editDescription">
             <textarea
-              className="font-medium text-xl max-w-[600px] h-max py-10 w-full resize-none overflow-y-hidden "
+              className="font-medium text-xl max-w-[600px] py-10 w-full  overflow-y-hidden "
               value={description}
               onChange={(e) => setDescription(e.target.value)}
             />
@@ -395,7 +402,7 @@ function PublishContent() {
                   viewBox="0 0 24 24"
                   fill="none"
                   className="cursor-pointer"
-                  onClick={() => handleClose()}
+                  onClick={() => handleClose(key)}
                 >
                   <title id="closenew-icon-title">closenew</title>
                   <path
@@ -438,13 +445,7 @@ function PublishContent() {
         />
       </div>
       <div className="w-full flex gap-10 justify-end my-10">
-        <Button
-          onClick={() => {
-            navigate("profile");
-          }}
-        >
-          Cancel
-        </Button>
+        <Button onClick={() => goBack()}>Cancel</Button>
         <Button
           onClick={handlePublish}
           className=" bg-primary text-white rounded-md hover:bg-[#ad2224] "

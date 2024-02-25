@@ -5,7 +5,7 @@ import SignedInPage from "./pages/SignedInPage";
 import Profile from "./pages/Profile";
 import Following from "./pages/Following";
 import NewsLetter from "./pages/NewsLetter";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import PublishContent from "./pages/PublishContent";
 
 function App() {
@@ -15,25 +15,27 @@ function App() {
   //   token.current = localStorage.getItem("token");
   // }, []);
   useEffect(() => {
-    fetch(
-      `https://localhost:7281/api/Auth/userId?token=${localStorage.getItem(
-        "token"
-      )}`
-    )
-      .then((res) => {
-        return res.text();
-      })
-      .then((data) => {
-        fetch(`https://localhost:7281/api/User/${String(data)}`)
-          .then((res) => res.json())
-          .then((data) => {
-            setUser(data);
-            console.log("logedin user");
-          });
-      })
-      .catch(() => {
-        console.log("data failed");
-      });
+    if (token) {
+      fetch(
+        `https://localhost:7281/api/Auth/userId?token=${localStorage.getItem(
+          "token"
+        )}`
+      )
+        .then((res) => {
+          return res.text();
+        })
+        .then((data) => {
+          fetch(`https://localhost:7281/api/User/${String(data)}`)
+            .then((res) => res.json())
+            .then((data) => {
+              setUser(data);
+              console.log("logedin user");
+            });
+        })
+        .catch(() => {
+          console.log("data failed");
+        });
+    }
   }, [token]);
 
   const [theme, setTheme] = useState(false);

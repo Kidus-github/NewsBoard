@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Button } from "../ui/index";
+import { useNavigate } from "react-router-dom";
 function LoginModal({ setIsLogIn }) {
+  let navigate = useNavigate();
   const handleLogin = async (email, password) => {
     try {
       const response = await fetch("https://localhost:7281/api/Auth/login", {
@@ -174,6 +176,7 @@ function LoginModal({ setIsLogIn }) {
               onClick={() => {
                 setIsLogIn(false);
                 handleLogin(email, password);
+                navigate("/");
               }}
             >
               Log In

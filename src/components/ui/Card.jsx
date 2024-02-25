@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 function Card({ news, setCommentSeciton }) {
@@ -6,6 +6,7 @@ function Card({ news, setCommentSeciton }) {
   const [likeColor, setLikeColor] = useState(true);
   const [likeCount, setLikeCount] = useState(0);
   const [commentCount, setCommentCount] = useState(0);
+  let Profile = useRef("");
 
   let Now = new Date("2022-02-02T12:00:00");
   useEffect(() => {
@@ -32,6 +33,18 @@ function Card({ news, setCommentSeciton }) {
         console.log("dataFailed");
       });
   }, [news.contentId, setCommentCount]);
+  useEffect(() => {
+    fetch(
+      `https://localhost:7281/api/User/GetImageBYUserName?username=${news.author}`
+    )
+      .then((res) => res.text())
+      .then((data) => {
+        Profile.current = data;
+      })
+      .catch(() => {
+        console.log("dataFailed");
+      });
+  }, [news.author]);
 
   function postData(Data) {
     try {
@@ -142,7 +155,10 @@ function Card({ news, setCommentSeciton }) {
       <header className="mb-4 flex justify-between">
         <div className="flex items-center gap-3">
           <Link>
-            <img src={news.image} className="w-[40px] h-[40px] rounded-full" />
+            <img
+              src={Profile.current}
+              className="w-[40px] h-[40px] rounded-full"
+            />
           </Link>
           <div className="flex flex-col">
             <Link>{news.author}</Link>
