@@ -1,28 +1,25 @@
-import {
-  NewsListSection,
-  Footer,
-  ForYouMenu,
-  HomeHeader,
-} from "../components/ui/index";
+import { NewsListSection, ForYouMenu } from "../components/ui/index";
+import PersonalizedForYouModal from "../components/modals/PersonalizedForYouModal";
 import { useEffect, useState } from "react";
 
 function ForYouPage() {
   const [news, setNews] = useState([]);
+  const [niche, setNiche] = useState(false);
   useEffect(function () {
-    fetch("http://localhost:8000/news")
+    fetch("https://localhost:7281/api/Content") //category will be stated on the fetch for the news
       .then((res) => res.json())
       .then((data) => setNews(data))
       .catch(() => console.log("dataFailed"));
   }, []);
   return (
-    <>
-      <HomeHeader />
-      <div className="relative top-16">
-        <ForYouMenu />
+    <div className="dark:bg-black">
+      <div className="relative top-16 dark:bg-black dark:text-white">
+        <ForYouMenu niche={niche} setNiche={setNiche} />
+        {/* C:\Users\kidus\Desktop\NewsBoard\src\assets\gray_person.png */}
         <NewsListSection news={news} />
-        <Footer />
+        {niche && <PersonalizedForYouModal niche={niche} setNiche={setNiche} />}
       </div>
-    </>
+    </div>
   );
 }
 

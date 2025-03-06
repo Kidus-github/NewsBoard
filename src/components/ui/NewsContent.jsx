@@ -1,27 +1,28 @@
 function NewsContent({ news }) {
-  const { headline, discription, author, date, img } = news;
+  const { id, headline, shortDiscription, discription, author, date, img } =
+    news;
   return (
-    <div className="mx-20 my-10 flex justify-between gap-4">
+    <div className="mx-20 my-10 flex justify-between">
       <div className="max-w-[900px]">
-        <h1 className="font-bold text-4xl my-8">{headline}</h1>
+        <h1 className="font-bold text-4xl my-8">{title}</h1>
         <div className="flex justify-between my-10 ">
           <p>{author}</p>
-          <p>{date}</p>
+          <p>{dateCreated}</p>
         </div>
         <div>
-          {img?.map((image, i) => (
+          {img.map((image, i) => (
             <img src={image} key={i} />
           ))}
         </div>
-        <div className="my-20 flex justify-center">
-          <p>{discription}</p>
+        <div className="py-20 flex justify-center">
+          <p>{description}</p>
         </div>
         <div>
           <h1>RELATED</h1>
           <ul>{/* list of related news */}</ul>
         </div>
       </div>
-      <div className="">{/* Advertising lays here */}</div>
+      <div>{/* Advertising lays here */}</div>
     </div>
   );
 }

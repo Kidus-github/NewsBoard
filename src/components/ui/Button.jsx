@@ -1,7 +1,7 @@
 function Button({ children, className, onClick }) {
   return (
     <button
-      className={`${className} cursor-pointer font-medium py-2 px-5 flex justify-center items-center min-w-fit`}
+      className={`py-2 px-5 ${className} cursor-pointer font-medium  flex justify-center items-center min-w-fit`}
       onClick={onClick}
     >
       {children}
