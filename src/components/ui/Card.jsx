@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 function Card({ news }) {
   return (
-    <Link to={`newsletter/${news.id}`}>
+    <Link to={`/newsletter/${news.id}`}>
       <article className="p-4 border-slate-200 border-2 border-solid w-[400px] h-[600px] rounded-2xl">
         <header>
           <div>

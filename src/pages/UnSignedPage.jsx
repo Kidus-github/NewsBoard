@@ -1,6 +1,7 @@
 import IntroSection from "../components/IntroSection";
 import { Nav, Header, NewsListSection, Footer } from "../components/ui/index";
 import { useEffect, useState } from "react";
+import SignupModal from "../components/modals/SignupModal";
 
 function UnSignedPage() {
   const [news, setNews] = useState([]);
@@ -17,6 +18,7 @@ function UnSignedPage() {
       <Nav />
       <NewsListSection news={news} />
       <Footer />
+      <SignupModal />
     </>
   );
 }
